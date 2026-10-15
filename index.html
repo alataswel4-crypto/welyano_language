@@ -11,45 +11,136 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow: hidden; user-select: none;
   }
-  #screen {
+  .hidden { display: none !important; }
+
+  /* ====== ЭКРАН ВХОДА ====== */
+  #authScreen {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 24px; background: #FFFFFF;
+  }
+  #authScreen h1 {
+    font-size: 38px; font-weight: 800; margin-bottom: 6px;
+    color: #212121; text-align: center;
+  }
+  #authScreen .sub { color: #888; margin-bottom: 32px; text-align: center; }
+  #authScreen input {
+    width: 100%; max-width: 340px;
+    padding: 16px 18px; font-size: 17px;
+    border: 2px solid #E0E0E0; border-radius: 14px;
+    margin-bottom: 12px; outline: none;
+    background: #FAFAFA; color: #212121;
+    transition: border-color 0.2s;
+  }
+  #authScreen input:focus { border-color: #4CAF50; background: #FFFFFF; }
+  #authError {
+    color: #E53935; font-size: 14px; min-height: 18px;
+    margin-bottom: 8px; text-align: center;
+  }
+  .authBtns { display: flex; gap: 12px; width: 100%; max-width: 340px; }
+  .authBtns button {
+    flex: 1; padding: 16px; font-size: 17px; font-weight: 700;
+    border-radius: 14px; cursor: pointer; border: none;
+    transition: transform 0.1s;
+  }
+  .authBtns button:active { transform: scale(0.96); }
+  #loginBtn { background: #4CAF50; color: white; box-shadow: 0 6px 18px rgba(76,175,80,0.35); }
+  #registerBtn { background: #EEE; color: #333; }
+
+  /* ====== ГЛАВНОЕ МЕНЮ ====== */
+  #menuScreen {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 24px; background: #FFFFFF;
+  }
+  #menuScreen h1 { font-size: 34px; font-weight: 800; margin-bottom: 4px; }
+  #menuScreen .hello { color: #888; margin-bottom: 30px; }
+  .menuBtn {
+    width: 100%; max-width: 320px;
+    padding: 22px; font-size: 20px; font-weight: 700;
+    border-radius: 16px; cursor: pointer; border: none;
+    margin-bottom: 14px; text-align: left;
+    padding-left: 28px;
+    transition: transform 0.1s, box-shadow 0.2s;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .menuBtn:active { transform: scale(0.97); }
+  .menuBtn.profile { background: #E3F2FD; color: #1565C0; }
+  .menuBtn.chats   { background: #FFF3E0; color: #E65100; }
+  .menuBtn.play    { background: #4CAF50; color: white; box-shadow: 0 6px 20px rgba(76,175,80,0.4); }
+  .menuBtn .icon   { font-size: 24px; }
+  #logoutBtn {
+    margin-top: 20px; background: none; border: none;
+    color: #999; font-size: 15px; cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* ====== ПРОФИЛЬ ====== */
+  #profileScreen {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    padding: 24px; background: #FFFFFF;
+    overflow-y: auto;
+  }
+  .topBar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px; flex-shrink: 0;
+  }
+  .topBar h2 { font-size: 22px; font-weight: 800; }
+  .backBtn {
+    background: #EEE; border: none; border-radius: 10px;
+    padding: 8px 14px; font-size: 15px; cursor: pointer; color: #333;
+  }
+  .avatar {
+    width: 90px; height: 90px; border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; color: white; font-weight: 800;
+    margin: 0 auto 16px;
+  }
+  .profileName {
+    text-align: center; font-size: 24px; font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .profileCode {
+    text-align: center; color: #888; font-size: 15px;
+    margin-bottom: 30px;
+  }
+  .statsGrid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    max-width: 400px; margin: 0 auto; width: 100%;
+  }
+  .statCard {
+    background: #F5F5F5; border-radius: 16px; padding: 20px;
+    text-align: center;
+  }
+  .statCard .value {
+    font-size: 28px; font-weight: 800; color: #4CAF50;
+    margin-bottom: 4px;
+  }
+  .statCard .label { color: #888; font-size: 14px; }
+
+  /* ====== ИГРА ====== */
+  #gameScreen {
     position: absolute; inset: 0;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     padding: 20px;
   }
-  .hidden { display: none !important; }
-
-  /* Стартовый экран */
-  #start h1 {
-    font-size: 42px; font-weight: 800; margin-bottom: 8px;
-    color: #212121; text-align: center;
-  }
-  #start p { color: #888; margin-bottom: 40px; text-align: center; }
-  #playBtn {
-    background: #4CAF50; color: white; border: none;
-    padding: 22px 60px; font-size: 26px; font-weight: 700;
-    border-radius: 18px; cursor: pointer;
-    box-shadow: 0 6px 20px rgba(76,175,80,0.4);
-    transition: transform 0.1s;
-  }
-  #playBtn:active { transform: scale(0.95); }
-
-  /* Игра */
-  #game { position: relative; padding: 0; }
   #hud {
-    position: absolute; top: 10px; left: 0; right: 0;
-    display: flex; justify-content: space-between;
-    padding: 0 20px; font-size: 18px; font-weight: 700;
-    color: #212121; z-index: 2;
+    position: absolute; top: 14px; left: 20px;
+    font-size: 18px; font-weight: 700; z-index: 2;
   }
   #score { color: #4CAF50; }
-  #backBtn {
+  #gameBackBtn {
     position: absolute; top: 10px; right: 20px;
     background: #eee; border: none; border-radius: 10px;
     padding: 8px 14px; font-size: 16px; cursor: pointer;
     color: #333; z-index: 3;
   }
-  canvas {
+  #gameCanvas {
     display: block; background: #FAFAFA;
     border-radius: 12px;
     box-shadow: 0 2px 20px rgba(0,0,0,0.08);
@@ -59,18 +150,13 @@
     background: #4CAF50; color: white;
     padding: 8px 16px; border-radius: 10px;
     font-size: 18px; font-weight: 700;
-    pointer-events: none;
-    opacity: 0;
+    pointer-events: none; opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
     transform: translate(-50%, -100%) scale(0.8);
-    white-space: nowrap;
-    z-index: 10;
+    white-space: nowrap; z-index: 10;
     box-shadow: 0 4px 12px rgba(76,175,80,0.4);
   }
-  #wordPopup.show {
-    opacity: 1;
-    transform: translate(-50%, -100%) scale(1);
-  }
+  #wordPopup.show { opacity: 1; transform: translate(-50%, -100%) scale(1); }
   #gameOver {
     position: absolute; inset: 0;
     background: rgba(255,255,255,0.95);
@@ -87,8 +173,7 @@
   }
   #controls {
     position: absolute; bottom: 20px; left: 0; right: 0;
-    display: flex; justify-content: center; gap: 12px;
-    z-index: 4;
+    display: flex; justify-content: center; gap: 12px; z-index: 4;
   }
   .ctrl {
     width: 60px; height: 60px; border-radius: 50%;
@@ -97,43 +182,241 @@
     cursor: pointer; color: #333;
   }
   .ctrl:active { background: #ddd; }
+
+  /* ====== ЧАТЫ ====== */
+  #chatsScreen {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    background: #FFFFFF;
+  }
+  .chatHeader {
+    padding: 16px 20px; border-bottom: 1px solid #EEE;
+    display: flex; align-items: center; gap: 12px;
+    flex-shrink: 0;
+  }
+  .chatHeader h2 { font-size: 20px; font-weight: 800; flex: 1; }
+  .lockBadge {
+    background: #E8F5E9; color: #2E7D32;
+    padding: 4px 10px; border-radius: 8px;
+    font-size: 12px; font-weight: 700;
+  }
+  #chatList {
+    flex: 1; overflow-y: auto; padding: 12px;
+  }
+  .chatItem {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px; border-radius: 14px;
+    cursor: pointer; transition: background 0.15s;
+    margin-bottom: 6px;
+  }
+  .chatItem:hover, .chatItem:active { background: #F5F5F5; }
+  .chatAvatar {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: linear-gradient(135deg, #FF9800, #FFB74D);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: white; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .chatInfo { flex: 1; min-width: 0; }
+  .chatName { font-weight: 700; font-size: 16px; margin-bottom: 2px; }
+  .chatLast {
+    color: #888; font-size: 13px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .addChatBtn {
+    position: absolute; bottom: 24px; right: 24px;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #4CAF50; color: white; border: none;
+    font-size: 30px; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(76,175,80,0.5);
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1; z-index: 4;
+  }
+  .addChatBtn:active { transform: scale(0.93); }
+  #emptyChats {
+    text-align: center; color: #AAA; padding: 60px 20px; font-size: 15px;
+  }
+
+  /* ====== ОКНО ЧАТА ====== */
+  #dialogScreen {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    background: #FAFAFA;
+  }
+  #messages {
+    flex: 1; overflow-y: auto; padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .msg {
+    max-width: 78%; padding: 10px 14px;
+    border-radius: 16px; font-size: 15px;
+    line-height: 1.4; word-wrap: break-word;
+    position: relative;
+  }
+  .msg.out {
+    align-self: flex-end; background: #4CAF50; color: white;
+    border-bottom-right-radius: 4px;
+  }
+  .msg.in {
+    align-self: flex-start; background: #FFFFFF; color: #212121;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .msg .time {
+    font-size: 10px; opacity: 0.7; margin-top: 4px;
+    display: block; text-align: right;
+  }
+  .msg .encIcon { font-size: 10px; opacity: 0.7; margin-right: 3px; }
+  #msgInputBar {
+    display: flex; gap: 8px; padding: 12px;
+    background: #FFFFFF; border-top: 1px solid #EEE;
+    flex-shrink: 0;
+  }
+  #msgInput {
+    flex: 1; padding: 12px 16px; font-size: 15px;
+    border: 2px solid #E0E0E0; border-radius: 22px;
+    outline: none; background: #FAFAFA;
+  }
+  #msgInput:focus { border-color: #4CAF50; background: #FFF; }
+  #sendBtn {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: #4CAF50; color: white; border: none;
+    font-size: 20px; cursor: pointer; flex-shrink: 0;
+  }
+  #sendBtn:active { transform: scale(0.93); }
+
+  /* ====== МОДАЛЬНОЕ ОКНО (добавить чат) ====== */
+  .modalBg {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100; padding: 24px;
+  }
+  .modalBox {
+    background: #FFF; border-radius: 20px;
+    padding: 24px; width: 100%; max-width: 360px;
+  }
+  .modalBox h3 { font-size: 20px; margin-bottom: 16px; }
+  .modalBox input {
+    width: 100%; padding: 14px 16px; font-size: 16px;
+    border: 2px solid #E0E0E0; border-radius: 12px;
+    margin-bottom: 12px; outline: none; background: #FAFAFA;
+  }
+  .modalBox input:focus { border-color: #4CAF50; background: #FFF; }
+  .modalBtns { display: flex; gap: 10px; }
+  .modalBtns button {
+    flex: 1; padding: 14px; border-radius: 12px;
+    font-size: 16px; font-weight: 700; cursor: pointer; border: none;
+  }
+  .modalBtns .cancel { background: #EEE; color: #333; }
+  .modalBtns .confirm { background: #4CAF50; color: white; }
 </style>
 </head>
 <body>
-
-<!-- Стартовый экран -->
-<div id="screen" class="hidden">
-  <div id="start">
-    <h1>🐍 Змейка</h1>
-    <p>Veljano Edition</p>
-    <button id="playBtn">Играть</button>
+<!-- ================= ЭКРАН ВХОДА ================= -->
+<div id="authScreen">
+  <h1>🐍 Veljano</h1>
+  <p class="sub">Войдите или зарегистрируйтесь</p>
+  <input type="text" id="authName" placeholder="Ваше имя" autocomplete="off">
+  <input type="text" id="authCode" placeholder="Код (пароль)" autocomplete="off">
+  <div id="authError"></div>
+  <div class="authBtns">
+    <button id="loginBtn">Войти</button>
+    <button id="registerBtn">Регистрация</button>
   </div>
+</div>
 
-  <!-- Игра -->
-  <div id="game" class="hidden" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-    <div id="hud">
-      <div>Очки: <span id="score">0</span></div>
+<!-- ================= ГЛАВНОЕ МЕНЮ ================= -->
+<div id="menuScreen" class="hidden">
+  <h1>🐍 Veljano</h1>
+  <p class="hello" id="menuHello">Привет!</p>
+  <button class="menuBtn profile" id="toProfileBtn">
+    <span class="icon">👤</span> Профиль
+  </button>
+  <button class="menuBtn chats" id="toChatsBtn">
+    <span class="icon">💬</span> Переписки
+  </button>
+  <button class="menuBtn play" id="toGameBtn">
+    <span class="icon">🎮</span> Играть
+  </button>
+  <button id="logoutBtn">Выйти</button>
+</div>
+
+<!-- ================= ПРОФИЛЬ ================= -->
+<div id="profileScreen" class="hidden">
+  <div class="topBar">
+    <h2>Профиль</h2>
+    <button class="backBtn" data-back>← Назад</button>
+  </div>
+  <div class="avatar" id="profileAvatar">?</div>
+  <div class="profileName" id="profileName">—</div>
+  <div class="profileCode" id="profileCode">Код: —</div>
+  <div class="statsGrid">
+    <div class="statCard">
+      <div class="value" id="statScore">0</div>
+      <div class="label">Очков</div>
     </div>
-    <button id="backBtn">← Меню</button>
-    <canvas id="canvas"></canvas>
-    <div id="wordPopup"></div>
-    <div id="gameOver" class="hidden">
-      <h2>Игра окончена</h2>
-      <p>Очки: <span id="finalScore">0</span></p>
-      <button id="restartBtn">Ещё раз</button>
+    <div class="statCard">
+      <div class="value" id="statTime">0м</div>
+      <div class="label">В приложении</div>
     </div>
-    <div id="controls">
-      <button class="ctrl" data-dir="left">←</button>
-      <button class="ctrl" data-dir="up">↑</button>
-      <button class="ctrl" data-dir="down">↓</button>
-      <button class="ctrl" data-dir="right">→</button>
+    <div class="statCard">
+      <div class="value" id="statGames">0</div>
+      <div class="label">Игр сыграно</div>
+    </div>
+    <div class="statCard">
+      <div class="value" id="statBest">0</div>
+      <div class="label">Лучший результат</div>
     </div>
   </div>
 </div>
 
+<!-- ================= ИГРА ================= -->
+<div id="gameScreen" class="hidden">
+  <div id="hud">Очки: <span id="score">0</span></div>
+  <button id="gameBackBtn" data-back>← Меню</button>
+  <canvas id="gameCanvas"></canvas>
+  <div id="wordPopup"></div>
+  <div id="gameOver" class="hidden">
+    <h2>Игра окончена</h2>
+    <p>Очки: <span id="finalScore">0</span></p>
+    <button id="restartBtn">Ещё раз</button>
+  </div>
+  <div id="controls">
+    <button class="ctrl" data-dir="left">←</button>
+    <button class="ctrl" data-dir="up">↑</button>
+    <button class="ctrl" data-dir="down">↓</button>
+    <button class="ctrl" data-dir="right">→</button>
+  </div>
+</div>
+
+<!-- ================= СПИСОК ЧАТОВ ================= -->
+<div id="chatsScreen" class="hidden">
+  <div class="chatHeader">
+    <button class="backBtn" data-back>← Назад</button>
+    <h2>Переписки</h2>
+    <span class="lockBadge">🔒 E2E</span>
+  </div>
+  <div id="chatList"></div>
+  <button class="addChatBtn" id="addChatBtn">+</button>
+</div>
+
+<!-- ================= ДИАЛОГ (ЧАТ) ================= -->
+<div id="dialogScreen" class="hidden">
+  <div class="chatHeader">
+    <button class="backBtn" id="dialogBackBtn">← Назад</button>
+    <h2 id="dialogName">Чат</h2>
+    <span class="lockBadge">🔒</span>
+  </div>
+  <div id="messages"></div>
+  <div id="msgInputBar">
+    <input type="text" id="msgInput" placeholder="Сообщение..." autocomplete="off">
+    <button id="sendBtn">➤</button>
+  </div>
+</div>
 <script>
 // ============================================================
-//  СЛОВАРЬ ВЭЛЬЯНСКИХ СЛОВ (случайные для показа)
+//  СЛОВАРЬ ВЭЛЬЯНСКИХ СЛОВ
 // ============================================================
 const VELJANO_WORDS = [
   "Vejl", "Ajo", "Lui", "Fjat", "Djomo", "Kajto", "Kajta",
@@ -157,9 +440,418 @@ const VELJANO_WORDS = [
 ];
 
 // ============================================================
+//  ШИФРОВАНИЕ (простая реализация XOR + Base64)
+//  Это демонстрационное E2E-подобное шифрование.
+//  Ключ выводится из кода пользователя.
+// ============================================================
+function deriveKey(code) {
+  // Простой хеш из кода -> строка-ключ
+  let h = 0;
+  for (let i = 0; i < code.length; i++) {
+    h = ((h << 5) - h) + code.charCodeAt(i);
+    h |= 0;
+  }
+  let key = '';
+  let seed = Math.abs(h) || 12345;
+  for (let i = 0; i < 32; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    key += String.fromCharCode((seed % 94) + 33);
+  }
+  return key;
+}
+
+function xorCipher(text, key) {
+  let out = '';
+  for (let i = 0; i < text.length; i++) {
+    out += String.fromCharCode(
+      text.charCodeAt(i) ^ key.charCodeAt(i % key.length)
+    );
+  }
+  return out;
+}
+
+function encryptText(text, key) {
+  try {
+    const utf8 = unescape(encodeURIComponent(text));
+    const xored = xorCipher(utf8, key);
+    return btoa(xored);
+  } catch (e) { return text; }
+}
+
+function decryptText(encoded, key) {
+  try {
+    const xored = atob(encoded);
+    const utf8 = xorCipher(xored, key);
+    return decodeURIComponent(escape(utf8));
+  } catch (e) { return encoded; }
+}
+
+// ============================================================
+//  ХРАНИЛИЩЕ (localStorage)
+// ============================================================
+const LS_USERS = 'veljano_users_v1';        // { code: {name, code, createdAt, totalTime, totalScore, gamesPlayed, bestScore} }
+const LS_CURRENT = 'veljano_current_user_v1'; // code
+const LS_CHATS = 'veljano_chats_v1';        // { ownerCode: { peerCode: [ {text, ts, out} ] } }
+const LS_PEERS = 'veljano_peers_v1';        // { ownerCode: { peerCode: { name } } }
+
+function loadJSON(key, def) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : def;
+  } catch (e) { return def; }
+}
+function saveJSON(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+}
+
+let USERS = loadJSON(LS_USERS, {});
+let CHATS = loadJSON(LS_CHATS, {});
+let PEERS = loadJSON(LS_PEERS, {});
+
+let currentUser = null; // объект пользователя
+let sessionStart = Date.now();
+let currentDialogPeer = null;
+<script>
+// ============================================================
+//  УПРАВЛЕНИЕ ЭКРАНАМИ
+// ============================================================
+const screens = {
+  auth:    document.getElementById('authScreen'),
+  menu:    document.getElementById('menuScreen'),
+  profile: document.getElementById('profileScreen'),
+  game:    document.getElementById('gameScreen'),
+  chats:   document.getElementById('chatsScreen'),
+  dialog:  document.getElementById('dialogScreen'),
+};
+
+function showScreen(name) {
+  Object.values(screens).forEach(s => s.classList.add('hidden'));
+  screens[name].classList.remove('hidden');
+}
+
+// ============================================================
+//  АВТОРИЗАЦИЯ
+// ============================================================
+const authName = document.getElementById('authName');
+const authCode = document.getElementById('authCode');
+const authError = document.getElementById('authError');
+
+function normalizeCode(c) {
+  return String(c || '').trim().toLowerCase();
+}
+
+document.getElementById('registerBtn').addEventListener('click', () => {
+  const name = authName.value.trim();
+  const code = normalizeCode(authCode.value);
+  authError.textContent = '';
+
+  if (!name) { authError.textContent = 'Введите имя'; return; }
+  if (code.length < 3) { authError.textContent = 'Код минимум 3 символа'; return; }
+  if (USERS[code]) { authError.textContent = 'Такой код уже занят'; return; }
+
+  USERS[code] = {
+    name: name,
+    code: code,
+    createdAt: Date.now(),
+    totalTime: 0,
+    totalScore: 0,
+    gamesPlayed: 0,
+    bestScore: 0,
+  };
+  saveJSON(LS_USERS, USERS);
+
+  loginAs(code);
+});
+
+document.getElementById('loginBtn').addEventListener('click', () => {
+  const code = normalizeCode(authCode.value);
+  authError.textContent = '';
+
+  if (!code) { authError.textContent = 'Введите код'; return; }
+  if (!USERS[code]) { authError.textContent = 'Пользователь не найден'; return; }
+
+  loginAs(code);
+});
+
+function loginAs(code) {
+  currentUser = USERS[code];
+  localStorage.setItem(LS_CURRENT, code);
+  sessionStart = Date.now();
+
+  // Обновляем время последнего входа
+  currentUser.lastLogin = Date.now();
+  saveJSON(LS_USERS, USERS);
+
+  authName.value = '';
+  authCode.value = '';
+  authError.textContent = '';
+
+  document.getElementById('menuHello').textContent = 'Привет, ' + currentUser.name + '!';
+  showScreen('menu');
+}
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  flushSessionTime();
+  currentUser = null;
+  localStorage.removeItem(LS_CURRENT);
+  showScreen('auth');
+});
+
+// ============================================================
+//  МЕНЮ
+// ============================================================
+document.getElementById('toProfileBtn').addEventListener('click', () => {
+  renderProfile();
+  showScreen('profile');
+});
+
+document.getElementById('toChatsBtn').addEventListener('click', () => {
+  renderChatList();
+  showScreen('chats');
+});
+
+document.getElementById('toGameBtn').addEventListener('click', () => {
+  showScreen('game');
+  startGame();
+});
+
+document.querySelectorAll('[data-back]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Если из диалога — вернёмся в чаты, обрабатывается отдельно
+    if (!screens.dialog.classList.contains('hidden')) return;
+    stopGame();
+    showScreen('menu');
+  });
+});
+
+// ============================================================
+//  ПРОФИЛЬ
+// ============================================================
+function fmtTime(ms) {
+  const totalMin = Math.floor(ms / 60000);
+  if (totalMin < 60) return totalMin + 'м';
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  return h + 'ч ' + m + 'м';
+}
+
+function renderProfile() {
+  if (!currentUser) return;
+  document.getElementById('profileAvatar').textContent =
+    (currentUser.name[0] || '?').toUpperCase();
+  document.getElementById('profileName').textContent = currentUser.name;
+  document.getElementById('profileCode').textContent = 'Код: ' + currentUser.code;
+  document.getElementById('statScore').textContent = currentUser.totalScore;
+  const live = Date.now() - sessionStart;
+  document.getElementById('statTime').textContent =
+    fmtTime((currentUser.totalTime || 0) + live);
+  document.getElementById('statGames').textContent = currentUser.gamesPlayed || 0;
+  document.getElementById('statBest').textContent = currentUser.bestScore || 0;
+}
+
+function flushSessionTime() {
+  if (!currentUser) return;
+  const elapsed = Date.now() - sessionStart;
+  currentUser.totalTime = (currentUser.totalTime || 0) + elapsed;
+  sessionStart = Date.now();
+  USERS[currentUser.code] = currentUser;
+  saveJSON(LS_USERS, USERS);
+}
+
+// Сохраняем время каждые 30 секунд
+setInterval(flushSessionTime, 30000);
+window.addEventListener('beforeunload', flushSessionTime);
+
+// ============================================================
+//  ЧАТЫ — СПИСОК
+// ============================================================
+function myPeerMap() {
+  const code = currentUser.code;
+  if (!PEERS[code]) PEERS[code] = {};
+  return PEERS[code];
+}
+function myChatMap() {
+  const code = currentUser.code;
+  if (!CHATS[code]) CHATS[code] = {};
+  return CHATS[code];
+}
+
+function renderChatList() {
+  const list = document.getElementById('chatList');
+  list.innerHTML = '';
+  const peers = myPeerMap();
+  const codes = Object.keys(peers);
+
+  if (codes.length === 0) {
+    list.innerHTML = '<div id="emptyChats">Нет переписок.<br>Нажмите «+», чтобы начать чат.</div>';
+    return;
+  }
+
+  codes.forEach(peerCode => {
+    const peer = peers[peerCode];
+    const msgs = (myChatMap()[peerCode] || []);
+    const last = msgs.length ? decryptText(msgs[msgs.length - 1].text, currentUser.code) : 'Нет сообщений';
+
+    const el = document.createElement('div');
+    el.className = 'chatItem';
+    el.innerHTML = `
+      <div class="chatAvatar">${(peer.name[0] || '?').toUpperCase()}</div>
+      <div class="chatInfo">
+        <div class="chatName">${escapeHtml(peer.name)}</div>
+        <div class="chatLast">${escapeHtml(last)}</div>
+      </div>
+    `;
+    el.addEventListener('click', () => openDialog(peerCode));
+    list.appendChild(el);
+  });
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, m => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[m]));
+}
+
+// ============================================================
+//  ДОБАВИТЬ ЧАТ (модальное окно)
+// ============================================================
+document.getElementById('addChatBtn').addEventListener('click', () => {
+  const bg = document.createElement('div');
+  bg.className = 'modalBg';
+  bg.innerHTML = `
+    <div class="modalBox">
+      <h3>Новый чат</h3>
+      <input type="text" id="peerCodeInput" placeholder="Код собеседника" autocomplete="off">
+      <div class="modalBtns">
+        <button class="cancel" id="modalCancel">Отмена</button>
+        <button class="confirm" id="modalConfirm">Начать</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(bg);
+
+  const close = () => bg.remove();
+  bg.querySelector('#modalCancel').addEventListener('click', close);
+  bg.querySelector('#modalConfirm').addEventListener('click', () => {
+    const peerCode = normalizeCode(bg.querySelector('#peerCodeInput').value);
+    if (!peerCode) return;
+    if (peerCode === currentUser.code) { alert('Нельзя начать чат с самим собой'); return; }
+    if (!USERS[peerCode]) { alert('Пользователь с таким кодом не найден'); return; }
+
+    myPeerMap()[peerCode] = { name: USERS[peerCode].name };
+    saveJSON(LS_PEERS, PEERS);
+    close();
+    renderChatList();
+  });
+});
+
+// ============================================================
+//  ДИАЛОГ (САМ ЧАТ)
+// ============================================================
+function openDialog(peerCode) {
+  currentDialogPeer = peerCode;
+  document.getElementById('dialogName').textContent = myPeerMap()[peerCode].name;
+  renderMessages();
+  showScreen('dialog');
+
+  // Автообновление (имитация "получения" сообщений)
+  clearInterval(window._dialogTimer);
+  window._dialogTimer = setInterval(() => {
+    renderMessages();
+  }, 2000);
+}
+
+document.getElementById('dialogBackBtn').addEventListener('click', () => {
+  clearInterval(window._dialogTimer);
+  currentDialogPeer = null;
+  renderChatList();
+  showScreen('chats');
+});
+
+function renderMessages() {
+  if (!currentDialogPeer) return;
+  const box = document.getElementById('messages');
+  const peer = currentDialogPeer;
+  const msgs = myChatMap()[peer] || [];
+
+  box.innerHTML = '';
+  msgs.forEach(m => {
+    const text = decryptText(m.text, currentUser.code);
+    const el = document.createElement('div');
+    el.className = 'msg ' + (m.out ? 'out' : 'in');
+    const time = new Date(m.ts).toLocaleTimeString('ru-RU', {hour:'2-digit', minute:'2-digit'});
+    el.innerHTML = `<span class="encIcon">🔒</span>${escapeHtml(text)}<span class="time">${time}</span>`;
+    box.appendChild(el);
+  });
+  box.scrollTop = box.scrollHeight;
+}
+
+document.getElementById('sendBtn').addEventListener('click', sendMessage);
+document.getElementById('msgInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+  if (!currentDialogPeer) return;
+  const input = document.getElementById('msgInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const peer = currentDialogPeer;
+  const msgs = myChatMap()[peer] || [];
+  const encrypted = encryptText(text, currentUser.code);
+
+  msgs.push({ text: encrypted, ts: Date.now(), out: true });
+  myChatMap()[peer] = msgs;
+  saveJSON(LS_CHATS, CHATS);
+
+  input.value = '';
+  renderMessages();
+
+  // === ЭХО-ОТВЕТ от "собеседника" (демо) ===
+  // Через 1.5 сек приходит "ответ" от имени собеседника
+  setTimeout(() => {
+    const peerUser = USERS[peer];
+    if (!peerUser) return;
+    const replies = [
+      "Привет!",
+      "Как дела?",
+      "Интересно!",
+      "Расскажи подробнее",
+      "Хорошо 👍",
+      "Согласен",
+      "Позже отвечу",
+      "Отличная идея!",
+      "Спасибо!",
+      "😊"
+    ];
+    const replyText = replies[Math.floor(Math.random() * replies.length)];
+    const encReply = encryptText(replyText, currentUser.code);
+
+    // Сохраняем как входящее в наш чат
+    const cur = myChatMap()[peer] || [];
+    cur.push({ text: encReply, ts: Date.now(), out: false });
+    myChatMap()[peer] = cur;
+    saveJSON(LS_CHATS, CHATS);
+
+    // Также сохраняем в чат собеседника (чтобы сохранялось "навсегда")
+    if (!CHATS[peer]) CHATS[peer] = {};
+    if (!CHATS[peer][currentUser.code]) CHATS[peer][currentUser.code] = [];
+    const replyAsOut = encryptText(replyText, currentUser.code);
+    CHATS[peer][currentUser.code].push({ text: replyAsOut, ts: Date.now(), out: true });
+    if (!PEERS[peer]) PEERS[peer] = {};
+    PEERS[peer][currentUser.code] = { name: currentUser.name };
+    saveJSON(LS_PEERS, PEERS);
+    saveJSON(LS_CHATS, CHATS);
+
+    if (currentDialogPeer === peer) renderMessages();
+  }, 1500);
+}
+<script>
+// ============================================================
 //  ИГРА ЗМЕЙКА
 // ============================================================
-const canvas = document.getElementById('canvas');
+const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 const popup = document.getElementById('wordPopup');
 const scoreEl = document.getElementById('score');
@@ -173,7 +865,7 @@ let snake, dir, nextDir, food, score, gameLoop, speed, popupTimer;
 
 function resizeCanvas() {
   const maxW = Math.min(window.innerWidth - 40, 500);
-  const maxH = window.innerHeight - 160;
+  const maxH = window.innerHeight - 200;
   const size = Math.min(maxW, maxH);
   const cells = 20;
   CELL = Math.floor(size / cells);
@@ -213,11 +905,10 @@ function randomVeljanoWord() {
 }
 
 function showWordPopup(x, y, word) {
-  // Позиционируем попап над яблоком
   const canvasRect = canvas.getBoundingClientRect();
-  const gameRect = document.getElementById('game').getBoundingClientRect();
-  const px = canvasRect.left - gameRect.left + (x + 0.5) * CELL;
-  const py = canvasRect.top - gameRect.top + y * CELL;
+  const screenRect = screens.game.getBoundingClientRect();
+  const px = canvasRect.left - screenRect.left + (x + 0.5) * CELL;
+  const py = canvasRect.top - screenRect.top + y * CELL;
 
   popup.style.left = px + 'px';
   popup.style.top = py + 'px';
@@ -225,38 +916,24 @@ function showWordPopup(x, y, word) {
   popup.classList.add('show');
 
   clearTimeout(popupTimer);
-  popupTimer = setTimeout(() => {
-    popup.classList.remove('show');
-  }, 1500);
+  popupTimer = setTimeout(() => popup.classList.remove('show'), 1500);
 }
 
 function draw() {
-  // Фон
   ctx.fillStyle = '#FAFAFA';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Сетка (едва заметная)
   ctx.strokeStyle = '#F0F0F0';
   ctx.lineWidth = 1;
   for (let i = 0; i <= COLS; i++) {
-    ctx.beginPath();
-    ctx.moveTo(i * CELL, 0);
-    ctx.lineTo(i * CELL, canvas.height);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(0, i * CELL);
-    ctx.lineTo(canvas.width, i * CELL);
-    ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(i * CELL, 0); ctx.lineTo(i * CELL, canvas.height); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, i * CELL); ctx.lineTo(canvas.width, i * CELL); ctx.stroke();
   }
 
   // Яблоко
   ctx.fillStyle = '#E53935';
   ctx.beginPath();
-  ctx.arc(
-    (food.x + 0.5) * CELL,
-    (food.y + 0.5) * CELL,
-    CELL * 0.4, 0, Math.PI * 2
-  );
+  ctx.arc((food.x + 0.5) * CELL, (food.y + 0.5) * CELL, CELL * 0.4, 0, Math.PI * 2);
   ctx.fill();
 
   // Змейка
@@ -264,11 +941,7 @@ function draw() {
     ctx.fillStyle = i === 0 ? '#4CAF50' : '#81C784';
     ctx.beginPath();
     const r = i === 0 ? CELL * 0.45 : CELL * 0.4;
-    ctx.arc(
-      (s.x + 0.5) * CELL,
-      (s.y + 0.5) * CELL,
-      r, 0, Math.PI * 2
-    );
+    ctx.arc((s.x + 0.5) * CELL, (s.y + 0.5) * CELL, r, 0, Math.PI * 2);
     ctx.fill();
   });
 }
@@ -277,24 +950,16 @@ function step() {
   dir = nextDir;
   const head = {x: snake[0].x + dir.x, y: snake[0].y + dir.y};
 
-  // Столкновение со стеной
-  if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) {
-    return gameOver();
-  }
-  // Столкновение с собой
-  if (snake.some(s => s.x === head.x && s.y === head.y)) {
-    return gameOver();
-  }
+  if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) return endGame();
+  if (snake.some(s => s.x === head.x && s.y === head.y)) return endGame();
 
   snake.unshift(head);
 
-  // Съел яблоко
   if (head.x === food.x && head.y === food.y) {
     score++;
     scoreEl.textContent = score;
     showWordPopup(food.x, food.y, randomVeljanoWord());
     placeFood();
-    // Ускорение
     if (speed > 70) speed -= 3;
     clearInterval(gameLoop);
     gameLoop = setInterval(step, speed);
@@ -305,8 +970,18 @@ function step() {
   draw();
 }
 
-function gameOver() {
+function endGame() {
   clearInterval(gameLoop);
+
+  // Сохраняем статистику
+  if (currentUser) {
+    currentUser.totalScore = (currentUser.totalScore || 0) + score;
+    currentUser.gamesPlayed = (currentUser.gamesPlayed || 0) + 1;
+    if (score > (currentUser.bestScore || 0)) currentUser.bestScore = score;
+    USERS[currentUser.code] = currentUser;
+    saveJSON(LS_USERS, USERS);
+  }
+
   finalScoreEl.textContent = score;
   gameOverDiv.classList.remove('hidden');
 }
@@ -318,23 +993,27 @@ function startGame() {
   gameLoop = setInterval(step, speed);
 }
 
+function stopGame() {
+  clearInterval(gameLoop);
+  gameOverDiv.classList.add('hidden');
+}
+
 // ============================================================
-//  УПРАВЛЕНИЕ
+//  УПРАВЛЕНИЕ ЗМЕЙКОЙ
 // ============================================================
 function setDir(dx, dy) {
-  // Нельзя разворачиваться на 180
   if (dir.x === -dx && dir.y === -dy) return;
   nextDir = {x: dx, y: dy};
 }
 
 document.addEventListener('keydown', (e) => {
+  if (screens.game.classList.contains('hidden')) return;
   if (e.key === 'ArrowUp') setDir(0, -1);
   else if (e.key === 'ArrowDown') setDir(0, 1);
   else if (e.key === 'ArrowLeft') setDir(-1, 0);
   else if (e.key === 'ArrowRight') setDir(1, 0);
 });
 
-// Свайпы
 let touchStart = null;
 canvas.addEventListener('touchstart', (e) => {
   touchStart = {x: e.touches[0].clientX, y: e.touches[0].clientY};
@@ -353,7 +1032,6 @@ canvas.addEventListener('touchend', (e) => {
   touchStart = null;
 }, {passive: true});
 
-// Кнопки управления
 document.querySelectorAll('.ctrl').forEach(btn => {
   btn.addEventListener('click', () => {
     const d = btn.dataset.dir;
@@ -364,32 +1042,34 @@ document.querySelectorAll('.ctrl').forEach(btn => {
   });
 });
 
-// ============================================================
-//  ЭКРАНЫ
-// ============================================================
-const screen = document.getElementById('screen');
-const startScreen = document.getElementById('start');
-const gameScreen = document.getElementById('game');
-
-document.getElementById('playBtn').addEventListener('click', () => {
-  startScreen.classList.add('hidden');
-  gameScreen.classList.remove('hidden');
-  gameScreen.style.display = 'flex';
-  startGame();
-});
-
-document.getElementById('backBtn').addEventListener('click', () => {
-  clearInterval(gameLoop);
-  gameScreen.classList.add('hidden');
-  startScreen.classList.remove('hidden');
+document.getElementById('gameBackBtn').addEventListener('click', () => {
+  stopGame();
+  flushSessionTime();
+  showScreen('menu');
 });
 
 document.getElementById('restartBtn').addEventListener('click', () => {
   startGame();
 });
 
-// Показ стартового экрана
-screen.classList.remove('hidden');
+window.addEventListener('resize', () => {
+  if (!screens.game.classList.contains('hidden') && snake) {
+    resizeCanvas();
+    draw();
+  }
+});
+
+// ============================================================
+//  АВТО-ВХОД ПРИ ЗАПУСКЕ
+// ============================================================
+(function boot() {
+  const savedCode = localStorage.getItem(LS_CURRENT);
+  if (savedCode && USERS[savedCode]) {
+    loginAs(savedCode);
+  } else {
+    showScreen('auth');
+  }
+})();
 </script>
 </body>
 </html>
