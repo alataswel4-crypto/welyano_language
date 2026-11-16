@@ -27,4 +27,4 @@
 Буква С: 
 Стол — Table — Stojlo [ˈstojˌlə] "jo"
 Страх — Fear — Ŝajo [ˈʃaˌjə] "jo"
-Стул — Chare — Stujl (формальный), Stujlô (не формальный) [stujl] "ja"
+Стул — Chair — Stujl (формальный), Stujlô (не формальный) [stujl] "ja"
