@@ -12,6 +12,12 @@
 Буква А: 
 Аксиоматический — Axiomatic — Axïomatïkwa (современное написание), aksïomatïkwa (более старое написание) [aksʲiomatʲikwa] 
 
+Буква Б: 
+Быть (где-то) — to be — javïnwo [jaˈβʲinˌwə]
+Быть (кем-то) — to be — wïllwï [ˈwʲilˌlwʲi]
+Быть (названным) — to be — mïllwï [ˈmʲilˌlwʲɪ]
+
+
 Буква Д: 
 Дерево — Tree — Bjawmô [bjaʊ̯m], [bjəʊ̯m] "so"; Bjawma [ˈbjaʊ̯ˌmə], [ˈbjəʊ̯ˌmə] "sa"
 Дом — Haus — Djomo [ˈdjoˌmə] "jo"
