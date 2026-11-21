@@ -21,6 +21,8 @@
 Буква Д: 
 Дерево — Tree — Bjawmô [bjaʊ̯m], [bjəʊ̯m] "so"; Bjawma [ˈbjaʊ̯ˌmə], [ˈbjəʊ̯ˌmə] "sa"
 Дом — Haus — Djomo [ˈdjoˌmə] "jo"
+Диван — Sofa —  Sojfa [ˈsojˌfa] "sa" 
+
 
 Буква И: 
 И — And — Baj [baj]
@@ -29,6 +31,8 @@
 Буква й: 
 Йод — Iodine — Jodô [jod] "jo"
 Йот — Yod — Jod [jod] "je" 
+
+Буква К: 
 
 Буква С: 
 Стол — Table — Stojlo [ˈstojˌlə] "jo"
